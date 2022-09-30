@@ -1,0 +1,19 @@
+* {margin: 0; padding: 0;}
+
+#warp { width:100%; border:1px solid red; position: relative}
+
+header { position:absolute; width:100%; background-color:#ccc;z-index: 99;}
+header .rowTop {border:1px solid red}
+.logo { width:100px; height:auto; margin:2% 0 0 2%}
+.logo img { display: block; width:100% }
+
+#search {}
+
+.userbox {border:1px solid red; float: right;}
+.userbox ul li {float:left;list-style: none;}
+.userbox ul li
+.userbox ul li a img {display: block; width:100%}
+
+#lnb {display: none;}
+
+
