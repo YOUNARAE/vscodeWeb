@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .container { position: relative; }
+        .content { height: 100%; /* 높이속성에서 %단위를 사용 시 경우 단독 적용되지 않는다 */
+            border:20px solid springgreen}
+        .content::before {  position: absolute;
+            content: "";
+            background-image: url(../images/img/W145525542135938241.png.crdownload), url(../images/img/99867C335C780BEE26.png);
+            background-position: left top, right bottom;
+            opacity: 0.1;
+            position: absolute;
+            top:0px;
+            left:0px;
+            right:0px;
+            bottom:0px;
+        }
+        .content p {padding:2%;text-align: left; background-color:springgreen; margin:50px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <p>한국인들에게 어쩌구 저쩌구 저쩌구 저쩌구 저쩌구 저쩌구 한국인들에게 
+                어쩌구 저쩌구 저쩌구 저쩌구 저쩌구 저쩌구 한국인들에게 어쩌구 저쩌구
+                 저쩌구 저쩌구 저쩌구 저쩌구 한국인들에게 어쩌구 저쩌구 한국인들에게 저쩌구 저쩌구 
+                 저쩌구 저쩌구 한국인들에게 어쩌구 저쩌구 저쩌구 저쩌구 저쩌구 저쩌구
+                  한국인들에게 어쩌구 저쩌구 저쩌구 저쩌구 저쩌구 저쩌구 한국인들에게 어쩌구
+                   저쩌구 저쩌구 저쩌구 저쩌구 저쩌구 한국인들에게 어쩌구 저쩌구 저쩌구 저쩌구 저쩌구 저쩌구 </p>
+        </div>
+    </div>
+</body>
+</html>

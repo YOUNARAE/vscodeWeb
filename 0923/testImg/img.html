@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img { width: 200px; height:auto; }
+    </style>
+</head>
+<body>
+    <!-- 
+        / root 최상단 경로
+        .현재위치를 나타낸다
+        ..현재 위치의 상단 
+        alt : alternative(대안) : 이미지가 지원되지 않을 때 글자로 대체(웹 접근성)
+    -->
+    <!-- 상대 경로 : 현재 위치를 기준으로 -->
+    <img src="../../images/img/99867C335C780BEE26.png" alt="뚱뚱한 리자몽.jpg">
+     <!--width="200" height="auto"-->
+    <!-- 절대 경로 / 내 컴퓨터 정보를 로컬로 표시할 수 없다 -->
+
+    <img src="D:\A_TeachingMaterial\12_vscodeWeb\narae\images\img" alt="절대경로이미지 뚱뚱한 리자몽.jpg">
+    <!-- 보안상의 이유로 절대경로로 내 컴퓨터에 있는 자료 자체를 보여줄 수는 없다 -->
+    
+    <!-- 상대경로와 절대경로의 반반, localhost 이후의 경로로 접근하면 이미지 표현 가능 -->
+    <img src="/images/img/99867C335C780BEE26.png" alt="뚱뚱한 리자몽.jpg">
+
+</body>
+</html>

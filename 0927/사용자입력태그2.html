@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>사용자입력태그2</title>
+</head>
+<body>
+	<!-- radio버튼 사용시 name값을 공통으로 하여 그룹핑시킬 필요가 있다-->
+	여자<input type="radio" name="gender" value="female">
+	남자<input type="radio" name="gender" value="male" checked>
+	<input type="button" value="선택버튼" onclick="f_checked()">
+
+	<hr>
+
+	<input type="checkbox" name="hobby" value="java">자바
+	<input type="checkbox" name="hobby" value="javascript">자바스크립트
+	<input type="checkbox" name="hobby" value="html">HTML
+	<input type="checkbox" name="hobby" value="css">CSS
+
+	<hr>
+	<input type="button" value="버튼" onclick="f_checked()">
+
+<script>
+	function f_checked(){
+		// radio button check
+		var radios = document.getElementsByName("gender");
+		console.log(radios);
+		for(var i=0; i<radios.length; i++){
+			//console.log(radios[i].checked);
+			if(radios[i].checked){
+				alert("선택한 성별은 " + radios[i].value);
+			}
+		}
+		// checkbox checked
+		var chkVals = "";
+		var chkboxs = document.querySelectorAll("input[type=checkbox]");
+		//console.log(chkboxs.length);
+		for(var i=0; i<chkboxs.length; i++){
+            //console.log(" for : " + chkboxs[i].checked + "" + chkboxs[i].value );
+			if(chkboxs[i].checked){
+				chkVals += chkboxs[i].value + " ";
+			}
+		}
+		console.log("내가 선택한 취미 : " + chkVals);
+	}
+
+</script>
+</body>
+</html>

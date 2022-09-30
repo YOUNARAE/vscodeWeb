@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #parent {
+            /* absolute의 부모가 되기 위한 자격 >> static한 상태가 아닐 것 */
+            position: relative; 
+            left: 100px;
+            top: 100px;
+        }
+        .child { 
+            border : 3px solid springgreen; 
+            /* position : static;  */ /* default, 방향속성의 적용을 받지 않음 */
+            /* position: relative; */ /* 정적위치에서 방향속성의 적용을 받음 */
+            position: absolute; /* 부모의 위치에서 방향 속성의 적용을 받음 */
+        }
+
+        .roze { 
+            background-color: pink; 
+            left : 10px;
+            top: 0px; 
+        }
+        .jeni { 
+            background-color: hotpink;
+            left : 30px;
+            top : 40px;
+            /* z-index: 1; */
+        }
+        .lisa { 
+            background-color: orchid;
+            left : 50px;
+            top : 80px; 
+        }
+        .jisu { 
+            background-color: purple;
+            left : 70px;
+            top : 120px; 
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div class="child roze">로제</div>
+        <div class="child jeni">제니</div>
+        <div class="child lisa">리사</div>
+        <div class="child jisu">지수</div>
+    </div>          
+    <input type="button" value="버튼" onclick="f_move();">
+
+    <script>
+        var v_arr = document.getElementsByClassName("child");
+        console.log("제니? =>" , v_arr[1]);
+
+        function f_move(){
+            //alert("스타일정보 유무확인 [ " + v_arr[1].style.left + " ]"); //내부스타일이라 스크립트로는 정보에 접근할 수 없다
+            if(!v_arr[1].style.left){ //공백이라 false상태라서 not으로 처리해줘야 true가 된다, (inline스타일로 정의되어있지 않을때)
+                v_arr[1].style.left = "30px";
+            } //데이터 초기화를 해준 과정
+            v_arr[1].style.left = parseInt(v_arr[1].style.left) + 10 + "px"; //문자를 제거해주는 parseInt 메소드
+            setTimeout(f_move,1000);
+        }
+    </script>
+</body>
+</html>

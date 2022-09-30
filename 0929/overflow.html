@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img { 
+            width:100px; 
+            height:100px; 
+            display: block;
+            float:left;
+
+        }
+        #parent {
+            position: relative;/* child 부모의 조건을 적용 */
+            /* 부모 영역안 컨텐츠의 용량이 초과되었을 때 제어 */
+            overflow: hidden; 
+            top: 100px;
+            left: 200px;
+            border : 10px inset mediumaquamarine;
+            width: 100px;
+            height:100px;
+            
+        }
+        .child {
+            position: absolute;
+            width:400px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="id_chd1" class="child" style="left:0px;">
+            <img src="../images/img/죠르디1.jfif" alt="">
+            <img src="../images/img/죠르디2.jpg" alt="">
+            <img src="../images/img/죠르디3.jpg" alt="">
+            <img src="../images/img/죠르디4.jfif" alt="">
+        </div>
+        <div id="id_chd2" class="child" style="left:400px">
+            <img src="../images/img/죠르디6.jpg" alt="">
+            <img src="../images/img/죠르디8.jfif" alt="">
+            <img src="../images/img/죠르디7.jpg" alt="">
+            <img src="../images/img/죠르디5.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        var v_chd1 = document.querySelector("#id_chd1"); //id는 단일한 것이기때문에 s가 붙지 않는다.
+        var v_chd2 = document.getElementById("id_chd2"); 
+
+        //alert("인라인스타일정보있음? [ " + v_chd1.style.left + " ]");
+        //인라인스타일로 초기화가 필요하지만 직접 inline style을 정의했음
+        
+        var v_mvWidth = 1; //이동할 거리 데이터를 셋팅 
+        //버튼을 따로 만들지 않아서 임의적으로 호출한다.
+        
+        function f_move(){
+            console.log(parseInt(v_chd1.style.left) - v_mvWidth);
+            v_chd1.style.left = parseInt(v_chd1.style.left) - v_mvWidth + "px";
+            v_chd2.style.left = parseInt(v_chd2.style.left) - v_mvWidth + "px";
+
+            //프레임 반복하기
+            if(parseInt(v_chd1.style.left) == -400){
+                v_chd1.style.left = "400px";
+            }
+            if(parseInt(v_chd2.style.left) == -400) v_chd2.style.left = "400px";
+
+            setTimeout(f_move,10); //재귀호출 
+        }
+        f_move(); //실행하고
+        /*      
+        document.getElementsByClassName //Elements에 s가 붙은 것들은 배열의 형태로 받아서 가져올 수 있어서 s가 붙는 것이다.
+        document.getElementsByName
+        document.getElementsByTagName
+        document.querySelector(); //요즘에 많이 사용한다, 선택자 명#,.을 꼭 붙여줘야한다.
+        document.querySelector("#id")
+        document.querySelector(".class") //첫번째 요소만 가져온다
+        document.querySelector("tag") //첫번째 요소만 가져온다
+        document.querySelectorAll; // 배열 형태로 데이터를 가져온다 
+        */
+    </script>
+</body>
+</html>
