@@ -3,50 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>날튜브 sub</title>
+    <link rel="stylesheet" href="./css/style.css">
     <!-- favicon 연결 -->
     <link rel="shorcut icon" href="./img/logo_icon.png"  type="image/x-icon">
-    <style>
-        * {margin:0; padding: 0;}
-        html, body { margin:0; padding:0; width:100; height:100%}
-        #sub_wrap {width:100%;position:relative;background-color: #ececec;}
-        #subhd { position:absolute; width:100%; height:60px; background-color:#ccc;z-index: 99; top:0; left:0;background-color: #fff;}
-        .logo { width:100px; height:auto; display: inline-block; float: left; margin:1%}
-        .logo img { display: block; width:100% }
-        #id_search {display:flex;width:500px;border:1px solid blue;}
-        
-        .sub_con { width:85%;margin:0 auto 0 auto;padding:5% 0 0 0;position: relative; overflow: auto;}
-        .sub_con .left {display:block;width:72%;float:left;}
-        .sub_con .right{display:block;width:27%;float:left;margin-left:1%;}
-        .mov_list tr td { padding-bottom:5px}
-        .userbox {display: inline-block; float:right; margin-right:2% }
-        .userbox a {float:left; width:25px;margin-left:25px;}
-        .userbox a:last-child {border-radius: 25px;overflow: hidden;}
-        .userbox a img{display:block; width:100%}
-
-        /* text css*/
-        .tag1 {color:#66cc99; font-size:12px; margin:1% 0}
-        .tag2 {color:#444;font-size:14px; margin:1% 0}
-        .mov_title {font-size:16px; font-weight: thin;}
-        .mov_menu {width:100%; border-bottom:1px solid #999; text-align: right; padding-bottom:1%}
-        .mov_menu a {margin-left:20px; text-decoration: none; color:#000; font-size: 14px;}
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<div id="sub_wrap">
-    <header id="subhd">
-        <h1 class="logo">
-            <img src="./img/logo.png" alt="">
-        </h1>
-        <form action="" id="id_search">
-            <input type="search" name="q">
-            <button>검색</button>
-        </form>
-        <div class="userbox">
-            <a href=""><img src="./img/video.png" alt=""></a>
-            <a href=""><img src="./img/bell.png" alt=""></a>
-            <a href=""><img src="./img/usericon.jpg" alt=""></a>
+<div id="wrap">
+    <div id="hd">
+        <div class="row">
+            <a href="" onclick="f_click();" class="menu_bt"><img src="./img/menu_icon.png" alt=""></a>
+            <h1 class="logo">
+               <a href="main.html"><img src="./img/logo.png" alt=""></a>
+            </h1>
+            <div class="search-box">
+                <form action="." method="post">
+                    <input class="search-txt" type="text" placeholder=" 검색">
+                    <button class="search-btn" type="submit">
+                    <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="userbox">
+                <a href=""><img src="./img/video.png" alt=""></a>
+                <a href=""><img src="./img/bell.png" alt=""></a>
+                <a href=""><img src="./img/usericon.jpg" alt=""></a>
+            </div>
         </div>
-    </header>
+    </div>
     <div class="sub_con">
         <div class="left">
             <iframe width="100%" height="600" src="https://www.youtube.com/embed/PS0qkO5qty0?autoplay=1&mute=0" 
@@ -73,91 +57,84 @@
                     <p>구독자 155명</p>
                     <p>숨 참고 러브 다이브 ㅠㅠ</p>
                     <p>#아카라카 #아이브 #lovedive</p>
-                    <a href=""><p>더 보기</p></a>
+                    <a href="" id="morebt">더 보기</a>
                 </div>
-                
             </div>
         </div>
         <div class="right">
             <table class="mov_list">
                 <tr>
-                    <td><img src="./img/sub/sthum01.png" alt=""></td>
+                    <a href="">
+                    <td><img src="./img/sub/sub_list_img01.jpg" alt=""></td>
+                    <td>
+                        <h4>BLACKPINK(블랙핑크) - Shut Down @인기가요 inkigayo</h4>
+                        <h5>스브스케이팝 X INKIGAYO<br/>조회수 783만회 · 5일 전</h5>
+                    </td>
+                    </a>
+                </tr>
+                <tr>
+                    <td><img src="./img/sub/sub_list_img02.jpg" alt=""></td>
                     <td>
                         <h4>BLACKPINK(블랙핑크) - Shut Down @인기가요 inkigayo</h4>
                         <h5>스브스케이팝 X INKIGAYO<br/>조회수 783만회 · 5일 전</h5>
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="./img/sub/sthum01.png" alt=""></td>
+                    <td><img src="./img/sub/sub_list_img03.jpg" alt=""></td>
                     <td>
                         <h4>BLACKPINK(블랙핑크) - Shut Down @인기가요 inkigayo</h4>
                         <h5>스브스케이팝 X INKIGAYO<br/>조회수 783만회 · 5일 전</h5>
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="./img/sub/sthum01.png" alt=""></td>
+                    <td><img src="./img/sub/sub_list_img04.jpg" alt=""></td>
                     <td>
                         <h4>BLACKPINK(블랙핑크) - Shut Down @인기가요 inkigayo</h4>
                         <h5>스브스케이팝 X INKIGAYO<br/>조회수 783만회 · 5일 전</h5>
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="./img/sub/sthum01.png" alt=""></td>
+                    <td><img src="./img/sub/sub_list_img05.jpg" alt=""></td>
                     <td>
                         <h4>BLACKPINK(블랙핑크) - Shut Down @인기가요 inkigayo</h4>
                         <h5>스브스케이팝 X INKIGAYO<br/>조회수 783만회 · 5일 전</h5>
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="./img/sub/sthum01.png" alt=""></td>
+                    <td><img src="./img/sub/sub_list_img06.jpg" alt=""></td>
                     <td>
                         <h4>BLACKPINK(블랙핑크) - Shut Down @인기가요 inkigayo</h4>
                         <h5>스브스케이팝 X INKIGAYO<br/>조회수 783만회 · 5일 전</h5>
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="./img/sub/sthum01.png" alt=""></td>
+                    <td><img src="./img/sub/sub_list_img07.jpg" alt=""></td>
                     <td>
                         <h4>BLACKPINK(블랙핑크) - Shut Down @인기가요 inkigayo</h4>
                         <h5>스브스케이팝 X INKIGAYO<br/>조회수 783만회 · 5일 전</h5>
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="./img/sub/sthum01.png" alt=""></td>
+                    <td><img src="./img/sub/sub_list_img08.jpg" alt=""></td>
                     <td>
                         <h4>BLACKPINK(블랙핑크) - Shut Down @인기가요 inkigayo</h4>
                         <h5>스브스케이팝 X INKIGAYO<br/>조회수 783만회 · 5일 전</h5>
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="./img/sub/sthum01.png" alt=""></td>
+                    <td><img src="./img/sub/sub_list_img09.jpg" alt=""></td>
                     <td>
                         <h4>BLACKPINK(블랙핑크) - Shut Down @인기가요 inkigayo</h4>
                         <h5>스브스케이팝 X INKIGAYO<br/>조회수 783만회 · 5일 전</h5>
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="./img/sub/sthum01.png" alt=""></td>
+                    <td><img src="./img/sub/sub_list_img10.jpg" alt=""></td>
                     <td>
                         <h4>BLACKPINK(블랙핑크) - Shut Down @인기가요 inkigayo</h4>
                         <h5>스브스케이팝 X INKIGAYO<br/>조회수 783만회 · 5일 전</h5>
                     </td>
                 </tr>
-                <tr>
-                    <td><img src="./img/sub/sthum01.png" alt=""></td>
-                    <td>
-                        <h4>BLACKPINK(블랙핑크) - Shut Down @인기가요 inkigayo</h4>
-                        <h5>스브스케이팝 X INKIGAYO<br/>조회수 783만회 · 5일 전</h5>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="./img/sub/sthum01.png" alt=""></td>
-                    <td>
-                        <h4>BLACKPINK(블랙핑크) - Shut Down @인기가요 inkigayo</h4>
-                        <h5>스브스케이팝 X INKIGAYO<br/>조회수 783만회 · 5일 전</h5>
-                    </td>
-                </tr>
-
             </table>
         </div>
     </div>

@@ -5,7 +5,6 @@
     <title>Document</title>
     <!-- favicon 연결 -->
     <link rel="shorcut icon" href="../images/img/99867C335C780BEE26.png"  type="image/x-icon">
-
 </head>
 <body>
     <pre>
@@ -24,11 +23,16 @@
     </pre>
 
     <script>
-        var v_mascot = "꿈돌이";
-        var v_mascot = 100;
-        var v_mascot = true;
-        var v_mascot = undefined;
-        var v_mascot = null;
+        "use strict"
+        function fun(){
+           var v_mascot = "꿈돌이";
+        }
+        fnc();
+        console.log(v_mascot);
+        // var v_mascot = 100;
+        // var v_mascot = true;
+        // var v_mascot = undefined;
+        // var v_mascot = null;
         // var이라는 변수는 재선언 재할당을 가능하다
         // let은 재선언은 안되고 재할당만 가능하다
         // const는 하나의 값을 선언할 때 상수의 형태로 값이 선언되기 때문에 재할당도 불가능하다
@@ -37,7 +41,26 @@
         // 기본형은 number, string, boolean이 있다 / .을 찍을 수 없다 (속성에 접근x)
         // 참조형은 배열(array)과 JSON(object)가 있음 /.을 찍을 수 있다 
 
-        console.log(typeof v_mascot);
--    </script>
+        // console.log(typeof v_mascot);
+/* 
+        var v_sansu = "123" + 456; // 더하기 연산자는 자동으로 문자열로 형 변환
+        var v_sansu = "123" * 456; // -,*,/연산자는 자동으로 숫자로 형 변환
+        console.log(v_sansu); 
+
+        alert( parseInt("ABC1230") ); // NaN : Not a Number
+        alert( parseInt("1230ABC") ); // 문자열을 분리시키고 숫자만 반환
+ */
+        if("123"==123){ // loose compare, 동등연산자. 값이 똑같으면 형변환을 자동을 해주는
+            alert("뜸1");
+        }
+
+        if("123"=== 123){ // strict compare, 일치연산자, 값과 형까지 모두 같아야함
+            alert("뜸2");
+        }
+
+        if([]==[]){ //배열 = 객체 <-각자 다른 주소값을 가지고 있기때문에 같은 모양을 가지고 있더라도 다른 객체로 인식
+            alert("뜸3");
+        }
+     </script>
 </body>
 </html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<script>
+
+    //복사(call by value)의
+    var v_roze = "로제";
+    var v_jeni = v_roze; // 로제
+    v_jeni = "제니"; // 재할당
+
+    console.log(v_jeni);
+
+    // 참조(call by reference) - 객체는 참조방식으로 동작
+    var v_arr = ["로제","제니","리사","지수"];
+    var v_arr2 = v_arr;
+    v_arr2[2] = "리리";
+
+    console.log(v_arr[2]);
+
+</script>
+</html>

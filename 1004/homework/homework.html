@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .divBox { display: block; position: relative; overflow: auto;margin: 1%; }
+
+
+    </style>
+</head>
+<body>
+    <div class="divBox" id="d1" onclick="f_one();">1번 답을 보고 싶다면 클릭해요</div>
+    <div class="divBox" id="d2" onclick="f_two();">2번 답을 보고 싶다면 클릭해요</div>
+    <div class="divBox" id="d3" onclick="f_three();">3번 답을 보고 싶다면 클릭해요</div>
+    <div class="divBox" id="d4" onclick="f_four();">4번 답을 보고 싶다면 클릭해요</div>
+    <div class="divBox" id="d5" onclick="f_five();">5번 답을 보고 싶다면 클릭해요</div>
+    <div class="divBox" id="d6" onclick="f_six();">6번 답을 보고 싶다면 클릭해요</div>
+    <script>
+        //1. 1부터 10까지 합을 구하는 프로그램
+        function f_one(){
+            var result1 = 0;
+            for(var i=1;i<=10;i++){
+                result1 += i;
+            }
+            document.querySelector('#d1').innerHTML = result1;
+        }
+
+        //2. 1부터 200까지 짝수의 합을 구하는 프로그램을 작성하시오.(continue를 이용)
+        function f_two(){
+            var result2 = 0;
+            for(var i=1;i<=200;i++){
+                if(i%2!=0){
+                    continue;
+                }
+                result2 += i;
+            }
+            document.querySelector('#d2').innerHTML = result2;
+        }    
+
+        //3. 사용자가 입력한 값을 더하고 사용자가 0을 입력하면 그떄까지 누적된 값을 출력하는 프로그램을 작성하시오.
+        function f_three(){
+            var result3 =0;
+            while(true){
+
+                var num = parseInt(prompt("값을 입력하세요(0을 입력하면 멈춥니다) : "));
+                if(num != 0){
+                    result3 += num;
+                } else {
+                    break;
+                }
+            }
+            document.querySelector('#d3').innerHTML = result3;
+        }
+
+        //4. 다중 for문을 이용해서 1~10까지 중 
+        //i와 K를 더한 합이 3의 배수일 때만 출력 continue를 이용
+        function f_four(){
+            var result4 = "";
+            var sum = 0;
+            for(var i=1; i<=10; i++){
+                for(var k=1; k<=10; k++){
+                    sum = i+k;
+                    if(sum%3!=0){
+                        continue;
+                    } 
+                    //result4 += sum+"<br/>";
+                    result4 += "i : " + i + ", k : " + k + ", i + k 를 더한 값 = "+ sum+"<br/>";
+                    // document.write("i: " + i + ", k : " + k + ", sum : "+ sum+"<br/>");
+                }   
+            }
+            document.querySelector('#d4').innerHTML = result4;
+        }
+
+        //5. 1~100까지 중 2의 배수이면서 3의 배수인 것만 출력
+        function f_five(){
+            
+            var result5 = 0;
+            for(var i=1; i<=100; i++){
+                if((i%2!=0)&&(i%3!=0)){
+                  continue;
+                } 
+                result5 += i + ", ";
+            }
+            document.querySelector('#d5').innerHTML = result5;
+            //document.write(result5);
+        }
+
+        //6. 두 수를 입력(prompt) 두 수의 합이 100이상일이때만 출력
+         //(continue를 이용, 두수 모두 0이 입력되면 종료)
+         function f_six(){
+            var num1 = 0;
+            var num2 = 0;
+            var sum = num1 + num2;
+
+//            if((num1 + num2) >= 100){
+//                document.querySelector('#d6').innerHTML = sum;
+//            } else if(num1==0&&num2==0){
+//                alert("프로그램을 종료합니다");
+//            } else {
+//                alert("두 수의 합이 100 이하입니다.");
+//            }
+            for(var i=0;i<=100;i++){
+                num1 = parseInt(prompt("첫번째 수 입력하세요 : "));
+                num2 = parseInt(prompt("두번째 수 입력하세요 : "));
+                sum = num1 + num2;
+                
+                if(sum > 0 && sum < 100 ){
+                    alert("합이 100이 넘어야 합니다.");
+                    continue;
+                } else if(sum == 0){
+                    document.querySelector('#d6').innerHTML = sum;
+                    alert("프로그램을 종료합니다");
+                    break;
+                } else {
+                    document.querySelector('#d6').innerHTML = sum;
+                    break;
+                }
+            } 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<!-- favicon 연결 -->
+<link rel="shorcut icon" href="../images/img/99867C335C780BEE26.png"  type="image/x-icon">
+
+<script>
+    // 조건문 반복문의 문법은 자바와 거의 같다
+    // => 자바와 자바스크립트 모두 C언어로부터 출발되었기때문에..
+    
+    // 문자열은 ""(공백)만 false로 형변환되고 나머지는 true로..
+    // 숫자는 0만 false로 형변환되고 나머지는 true..
+    // true로 사용하면 4자 코딩, !0으로 쓰면 2자로 2자를 절약하네요
+    if("0"){
+    //    alert("참이야");
+    } else {
+    //    alert("거짓이야");
+    }
+
+    // 객체순회 = for in 
+    for(var x in window){
+        console.log(window[x]);
+    }
+
+    //bareak, continue
+
+    var msg = "";
+    for(var i=0; i<10; i++){
+        if(i==3){
+            //break; // 밖으로 나가서 처음 만나는 조건문을 빠져나감
+            continue; // 해당되는 항목을 더 이상 실행하지 않고 스킵한다.
+        }
+        msg += i + "<br>";
+    }
+    document.write(msg);
+
+</script>

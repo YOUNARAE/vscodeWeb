@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- favicon 연결 -->
+    <link rel="shorcut icon" href="../images/img/99867C335C780BEE26.png"  type="image/x-icon">
+    <style>
+        div {
+            border:1px solid seagreen
+        }
+    </style>
+</head>
+<body>
+    <h3>숫자 2개와 연산자 1개를 입력하고 결과 출력</h3>
+    <!-- <div id="id_disp">div1</div>
+    <div>div2</div>
+    <div>div3</div> -->
+    <input type="text" id="id_text">
+    <input type="button" value="계산" onclick="calc();">
+    <script>
+        function calc(){
+            //var v_pmpt = prompt("1번째는 필수","2번째는 옵션");
+            //alert(v_pmpt + typeof v_pmpt);
+
+            var a = parseInt(prompt("첫번째 정수 입력")); // 정수로 변환
+            var b = parseInt(prompt("두번째 정수 입력"));
+            var c = prompt("연산자 입력","+,-,*,/ 중 하나");
+
+            var sum = 0;
+
+            //alert(a+","+b+","+c); //쉼표로 값을 구분해서 출력해줄 수 없다
+
+            //switch
+            switch(c){
+                case '+' :
+                    sum = a+b;
+                    break;  
+                case '-' :
+                    sum = a-b;
+                    break;
+                case '*' :
+                    sum = a*b;
+                    break;
+                case '/' :
+                    sum = a/b;
+                    break;       
+                default :
+                    alert("사칙연산자를 입력하세요");   
+                    return calc()  
+            }
+            //document.getElementsByTagName('id_text').innerHTML = sum;
+            document.querySelector('#id_text').value=sum; // 입력양식의 요소는 value로 선택
+            //document.querySelector("[input[type=text]").value=sum; // 입력양식의 요소는 value로 선택
+
+
+            // if(c =='+'){
+            //     sum = a + b;
+            // } else if(c == '-'){
+            //     sum = a - b;
+            // } else if(c == '*'){
+            //     sum = a * b;
+            // } else if( c == '/'){
+            //     sum = a / b;
+            // } else {
+            //     alert("사칙연산자를 입력하세요");
+            //     return calc();
+            // }
+            // document.write(sum);
+            //document.getElementById('id_disp').innerHTML = sum;
+            //document.querySelector('#id_disp').innerHTML = sum;
+            //ocument.getElementsByTagName('div')[2].innerHTML = sum;
+        }
+    </script>
+</body>
+</html>
