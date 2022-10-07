@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+var v_datas = [
+    {
+        "name" : "또치",
+        "birth" : "2021-01-01",
+        "skill" : "javascript"
+    },
+    {
+        "name" : "둘리",
+        "birth" : "2020-08-05",
+        "skill" : "angular"
+    },
+    {
+        "name" : "희동",
+        "birth" : "1999-09-24",
+        "skill" : "oracle"
+    },
+    {
+        "name" : "영희",
+        "birth" : "1921-11-31",
+        "skill" : "vue.js"
+    },
+    {
+        "name" : "길동",
+        "birth" : "2011-03-21",
+        "skill" : "all"
+    }
+];
+// name으로 정렬하기
+/*
+v_datas.sort(function(a,b){
+    if( a["name"] >= b["name"] ){
+        return 1;
+    } 
+    return -1;
+});
+console.log("이름으로 정렬 : " , v_datas);
+
+// 각 a와 b가 가진 객체의 속성 name에 접근해서 비교
+*/
+
+// birth으로 정렬하기
+/*
+v_datas.sort(function(a,b){
+    a.birth.replace("-","");
+    if( a.birth >= b.birth ){
+        return 1;
+    } 
+    return -1;
+    // return a.birth.replaceAll("-"," ") - b.birth.replaceAll("-"," ");
+});
+console.log("생일 순으로 : ",v_datas);
+*/
+
+//skill로 정렬하기 
+v_datas.sort(function(a,b){
+    if(a.skill >= b.skill){
+        return 1;
+    }
+    return -1;
+});
+console.log("스킬 순으로 정렬 : ",v_datas);
+
+</script>
