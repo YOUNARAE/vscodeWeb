@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script src="../js/random.js"></script>
+<script>
+    console.log(Math.random()); // 0~1사이 소수점 난수 발생
+
+    // 1~10까지 숫자 발생 - ceil()이용
+    console.log( Math.ceil(Math.random()*10) );
+    
+    // 0~10까지 숫자 발생 - floor()이용
+     console.log( Math.floor(Math.random()*11) );
+
+     // 4~9까지 숫자 발생 
+     console.log( Math.floor(Math.random()*6) + 4 );
+     
+     // 65(65를 포함)~100까지 숫자 발생
+     console.log( Math.floor(Math.random()*(100-65+1)) + 65 );
+     console.log("65~100", f_random(10,200));
+
+</script>

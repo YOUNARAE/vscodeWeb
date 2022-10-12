@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" value="눌러봐라" onclick="f_click()">
+<div id="colorBox" style="background-color: springgreen; color:#fff; display:block;">
+    <h2>집 가면 커피 먹고 샤워하고 젤리 먹고 과자 먹고 택배뜯고 냠냠냠</h2>
+</div>
+
+<input type="button" value="좀 더 다양한 컬러" onclick="f_click2()">
+<div id="colorBox2" style="background-color:#000; color:#fff; display:block;">
+    <h2>새삥 모든 게 다 새삥 보세옷을 걸쳐도 브랜드 묻는 DM이 와</h2>
+</div>
+<script src="../js/random.js"></script>
+<script>
+    var v_colors = ["blue", "red", "orange", "green", "pink", "olive"];
+    function f_click(){
+        //colorBox.style.backgroundColor = "navy";
+        var ranColor = v_colors[Math.floor(Math.random()*v_colors.length)];
+        console.log(ranColor);
+        colorBox.style.backgroundColor = ranColor;
+        setTimeout(f_click,500);
+    }
+
+    
+    var v_colorBox = document.querySelector("#colorBox2");
+    function f_ranColor(){
+        return "rgb(" + f_random(0,255) + ","
+                      + f_random(0,255) + ","
+                      + f_random(0,255) + ")";
+    }
+
+    //이벤트 부여하기
+    function f_click2(){
+        v_colorBox.style.color=f_ranColor();
+        v_colorBox.style.backgroundColor=f_ranColor();
+        console.log(v_colorBox);
+        setTimeout(f_click2,500);
+    }
+
+
+
+</script>
+</body>
+</html>

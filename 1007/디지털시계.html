@@ -33,10 +33,29 @@
         var v_sec = v_today.getSeconds(); // 초 
     
         //console.log(v_hour , " : ", v_min ," : ", v_sec);
+        
+        //console.log(typeof v_sec); // number이므로 length속성 사용불가
+        //console.log(typeof v_sec.toString());
+        
+        if(v_sec.toString().length == 1){
+        //if(v_sec < 10)
+            v_sec = "0" + v_sec;
+        }
+        if(v_min.toString().length == 1){
+        //if(v_min < 10)
+            v_min = "0" + v_min;
+        }
+        if(v_hour.toString().length == 1){
+        //if(v_hour < 10)
+            v_hour = "0" + v_hour;
+        }
+        
         v_clk1.innerHTML = v_hour + " : " + v_min + " : " + v_sec;
+
+
         setTimeout(f_clock, 1000);
     }, 1000);
-    // 00:00:00으로 뜰 수 있게끔 하는 게 과제다
+
 
 </script>
 </body>

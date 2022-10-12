@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h2>location</h2>
+    <h4>https://www.w3schools.com/bootstrap/#gsc.tab=0</h4>
+    <input type="button" value="페이지이동" onclick="f_go()">
+    <input type="button" value="페이지reload" onclick="f_reload()">
+    <input type="button" value="페이지replace" onclick="f_rep()">
+
+
+    <script>
+        //페이지 이동
+        function f_rep(){
+            location.replace("http://google.com");
+        }
+        /* href vs replace
+           href는 서버에 요청할 때도 있고,
+                  브라우저가 캐쉬한 파일을 보여줄 수도 있음
+           replace는 서버에 항상 새롭게 요청
+                  이동 후 이전페이지로 이동할 수 없다
+        */
+
+
+        function f_go(){
+            //location.assign("http://naver.com");
+            location.href="http://daum.net";
+        }
+
+        // 페이지 리로드 - 특별한 경우를 제외하고 권장하지 않음
+        function f_reload(){
+            location.reload();
+        }
+
+
+        var url = document.createElement("a"); //하이퍼링크 a를 하나 만들겠다는 뜻
+        //url.href = "https://www.w3schools.com/bootstrap/#gsc.tab=0";
+        url.href = "https://www.w3schools.com/bootstrap/#gsc.tab=0";
+
+        console.log("hash", url.hash);
+        console.log("host", url.host);
+        console.log("hostname", url.hostname);
+        console.log("pathname", url.pathname);
+        console.log("port", url.port);
+        console.log("protocol", url.protocol);
+        console.log("search", url.search); //물음표뒤로 붙어나오는 커리스트링
+
+    </script>
+</body>
+</html>

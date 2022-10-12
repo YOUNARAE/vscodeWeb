@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="가위바위보 게임" onclick="play();">
+    <div class="resultbox"></div>
+
+    <table class="multiple99"></table>
+<script>
+
+function play(){
+    var result = "";
+    var aiArray = ["가위","바위","보"];
+    var ranNum = Math.floor(Math.random()*3) + 0;
+    console.log(ranNum);
+    
+    var human = prompt("사용자 입력 : ", "가위, 바위, 보 중 입력해주세요");
+    console.log(human);
+
+    if(human == aiArray[ranNum]){
+        resulut = `둘이서 비겼다 얼레리 꼴레리`;
+    } else if(human=="바위"&&aiArray[ranNum]=="가위"||
+    human=="보"&&aiArray[ranNum]=="바위"||human=="가위"&&aiArray[ranNum]=="보"){
+        result = `인간은 ${human}를 냈고 AI는 ${aiArray[ranNum]}을 냈다. 인간의 승리!`;
+    } else {
+        result = `인간은 ${human}를 냈고 AI는 ${aiArray[ranNum]}을 냈다. AI가 정복하는 세상!`;
+    }
+
+    document.querySelector(".resultbox").innerHTML = result;
+    console.log(result);
+}
+</script>
+</body>
+</html>
