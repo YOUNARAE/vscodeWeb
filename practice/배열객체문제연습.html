@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>1) 이름을 계속 입력받아 배열로 저장하고 출력하는 프로그램을 작성하시오</p>
+    <p>입력의 마지막은 공백 문자를 입력하거나 "취소" 버튼을 눌렀을 때(null)로 한단</p>
+    <input type="button" value="1번 정답보기" onclick="f_name()">
+    <h2 class="result1">정답을 보여드릴까요?</h2>
+
+    <p>2) 서로 중복되지 않는 정수 5개를 입력받아 출력하는 프로그램을 작성하시오.</p>
+    <input type="button" value="2번 정답보기" onclick="f_num()">
+    <h2 class="result2">정답을 보여드릴까요?</h2>
+
+<script>
+    function f_name(){
+        var arr = [];
+        while(true){
+            var name = prompt("이름을 입력해주세요 : ");
+            arr.push(name);
+            if(name == " " || name == null) break;
+        }
+        document.querySelector(".result1").innerHTML = arr;
+    }
+
+
+    function f_num(){
+
+        var arr=[];
+        while(!0){
+            var inputNum = prompt("숫자를 입력해주세요 : ");
+            if(arr.indexOf(inputNum)!=-1){
+                alert("중복되는 수를 입력했습니다");
+            } else {
+                arr.push(inputNum);
+            } 
+            if(arr.length >= 5) break;
+        }
+        document.querySelector(".result2").innerHTML=arr;
+    }
+</script>
+</body>
+</html>

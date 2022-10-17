@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #dropArea {
+            width:400px;
+            height:auto;
+            border:3px solid aqua;
+        }
+    </style>
+</head>
+<body>
+    <ol id="id_flist"></ol>
+    <div id="dropArea" ondragover="f_dover()" ondrop="f_drop()"> 여기다 </div>
+<script>
+    var v_area = document.querySelector("#dropArea");
+    var v_flist = document.querySelector("#id_flist");
+
+    function f_dover(){
+        event.preventDefault();
+    }
+    
+    function f_drop(){
+        var v_files = event.dataTransfer.files; //파일 여러개
+        if(v_files.length >= 6){
+            alert("파일 5개 안됨");
+            return;
+        }
+
+        v_area.innerHTML ="";
+        v_flist.innerHTML ="";
+        for(var i=0;i<v_files.length;i++){
+            reader(v_files[i]);
+        }
+    }
+    
+    function reader(p_file){
+        // FileReader객체 생성하기
+        var v_freader = new FileReader();
+        v_freader.onload = function(){
+            var v_img = document.createElement("img");
+            v_img.src = v_freader.result;
+            v_img.width = 100;
+            v_img.setAttribute("height","50px");
+            v_area.appendChild(v_img);
+
+            //file list 추가
+            var v_li = document.createElement("li");
+            v_li.innerHTML = p_file.name;
+            v_flist.appendChild(v_li);
+        }
+        v_freader.readAsDataURL(p_file);
+    }
+
+    window.addEventListener("dragover", function(){
+        event.preventDefault();
+    });
+
+    window.addEventListener("drop", function(){
+        event.preventDefault();
+    });
+</script>
+</body>
+</html>

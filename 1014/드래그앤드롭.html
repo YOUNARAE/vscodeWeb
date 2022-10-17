@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .drop {
+            width:400px;
+            height:200px;
+            border: 3px solid pink;
+        }
+
+        img {
+            width:80px;
+            height:auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="drop">여기로 올려주세요</div>
+    <div class="drop">여기로 올려주세요</div>
+    <hr>
+    <img id="a" src="../images/img/어피치얼굴.png" alt="" draggable="true">
+<script>
+  var v_img = document.querySelector("img");
+  var v_dropAreas = document.querySelectorAll(".drop");
+
+  v_img.addEventListener('dragstart',function(){
+    //dataTransfer객체에 'imgA'의 이름으로 타겟의 id정보 저장
+    event.dataTransfer.setData('imgId', event.target.id);
+  });
+
+  for(var i=0;i<v_dropAreas.length; i++){
+    v_dropAreas[i].addEventListener('dragover',function(){
+      // dragover : 대상 위로 드래그 되는 순간의 이벤트
+      // 요소와 요소는 겹쳐질 수 없기 때문에,
+      // 기본 기능을 중지시켜
+      // 대상 위로 드래그 되는 상태를 상실시킴으로서 드롭 허용
+      event.preventDefault(); 
+    });
+    v_dropAreas[i].addEventListener('drop',function(){
+      var imgId = event.dataTransfer.getData('imgId');
+      event.target.appendChild(document.querySelector("#"+imgId));
+    });
+  }
+
+
+</script>
+</body>
+</html>

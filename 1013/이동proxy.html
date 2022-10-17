@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+        onclick 은 끝에요소에 이벤트를 실행해주고
+        addEventList는 스택에 쌓아놓고 계속 실행해준다
+    -->
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #id_disp {
+            font-size: 0;
+        }
+        img {
+            width: 100px;
+            height:100px;
+            margin:3px
+        }
+    </style>
+</head>
+<body>
+    <div id="id_disp">
+        <img src="../images/img/s1.jpg" alt="">
+        <img src="../images/img/s2.jpg" alt="">
+        <img src="../images/img/s3.png" alt="">
+        <img src="../images/img/s4.jpg" alt="">
+    </div>
+    <input type="button" value="&lt;&lt;" id="autoL" onclick="f_proxyStratLeft()">
+    <input type="button" value="&gt;&gt;" id="autoR"  onclick="f_proxyStratRight()">
+    <input type="button" value="정지" onclick="f_proxyEnd()">
+
+<script>
+    var v_stop = document.querySelector("#stop");
+    var v_autoR = document.querySelector("#autoR");
+    var v_autoL = document.querySelector("#autoL");
+    var v_disp = document.querySelector("#id_disp");
+    var timeout;
+
+    
+   function f_stop(){
+        clearTimeout(timeout); // setTimeout 기능 정지 
+    };
+
+    
+    function f_right(){
+        var last = v_disp.lastElementChild; 
+        v_disp.insertBefore(last, v_disp.firstChild); 
+        timeout = setTimeout(f_right,500);
+    };
+
+    
+    function f_left(){
+        var first = v_disp.firstElementChild; 
+        v_disp.insertBefore(first, v_disp.lastChild);
+        timeout = setTimeout(f_left,500);
+    };
+
+    // proxy pattern 대신하다
+    var exist = false; // 상태변수, 사용안함 상태
+    function f_proxyStratRight(){ 
+        if(!exist){
+            f_right(); //대리인이 대신 호출해줍니다
+            exist = true;
+        }
+    }
+
+    function f_proxyStratLeft(){ 
+        if(!exist){
+            f_left(); //대리인이 대신 호출해줍니다
+            exist = true;
+        }
+    }
+    
+    function f_proxyEnd(){
+        f_stop(); // 기능 정지
+        exist = false; // 사용안함 상태로 변경
+    }
+</script>
+</body>
+</html>

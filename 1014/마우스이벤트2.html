@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #move {
+            position: absolute; /*static상태라서*/
+            width: 150px;
+            height: 150px;
+            background-image: url("../images/img/00.jpg");
+            background-size: 100% auto;
+            background-position: bottom center;
+            color:transparent;
+            font-weight: bold;
+            border-radius: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="move">오레오</div>
+<script>
+    var v_mv = document.querySelector("#move");
+    window.addEventListener('mousemove',function(){
+        //console.log("마우스 x좌표 : ",event.clientX);
+        //console.log("마우스 Y좌표 : ",event.clientY);
+        v_mv.style.left = event.clientX + "px";
+        v_mv.style.top = event.clientY + "px";
+    });
+</script>
+</body>
+</html>
