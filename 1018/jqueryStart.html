@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 라이브러리 또는 외부파일의 위치 선정을 중요 (인터프리터방식) -->
+    <!-- CDN방식 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- 다운로드 방식 -->
+    <!-- <script src="../js/jquery-3.6.1.min.js"></script> -->
+</head>
+<body>
+<script>
+    window.onload = function(){
+        alert(document.querySelector("h1").innerHTML + "JAVASCRIPT");
+    }
+    //document.addEventListener("load", function(){});
+    //document.addEventListener("DOMContentLoaded", function(){})
+    $(document).ready(function(){ 
+        alert($('h1').html());
+    });
+</script>
+    <h1>까꿍</h1>
+    <!-- script 소스 영역이 document하단에 존재할 경우 -->
+    <!-- 문서준비를 위한 코드는 필요없음 -->
+</body>
+</html>

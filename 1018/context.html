@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        // $('selector', 'context') 
+        // context : 선택자를 검색할 범위 지정 / 생략시 문서 전체에서 검색
+        $('input',$('#frm2')).css('color','red')
+                             .css('font-size','1.5em')
+                             .css('font-style','italic'); // 메소드 체이닝
+        $('form').on('click',function(){
+            $('input').css('background-color','white'); // 초기화 먼저 진행해줘야한다
+            $('input',this).css('background-color','pink');
+        })
+    });
+</script>
+</head>
+<body>
+    <form id="frm1">
+        <input>
+    </form>
+    <form id="frm2">
+        <input>
+    </form>
+    <form id="frm3">
+        <input>
+    </form>
+</body>
+</html>
