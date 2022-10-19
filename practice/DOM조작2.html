@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>연습:DOM조작2</title>
+    <style>
+        .child {
+            border: 3px solid aquamarine;
+            font-size: 2em;
+        }
+
+        .꽁지 {
+            font-style: italic;
+            color:pink
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">엄마까투리
+        <div class="child">마지</div>
+        <div class="child">두리</div>
+        <div class="child">세찌
+            <h1 id="sonja">손자</h1>
+        </div>
+        <div class="child">꽁지</div>
+    </div>
+    <script>
+
+        var v_parent = document.querySelector("#parent");
+        var v_sonja = document.querySelector("#sonja");
+
+        var copy1 = v_parent.cloneNode();
+        var copy2 = v_parent.cloneNode(true);
+        console.log("원본 : ",v_parent)
+        console.log("카피한 거 : ",copy1)
+        console.log("카피한 거(깊게) : ",copy2)
+
+        v_parent.children[3].style.fontSize="4em";
+        var child = v_parent.children; // 배열로 저장된다. child에
+        child[3].setAttribute("class","꽁지");
+
+        //삭제
+        v_parent.removeChild(child[1]);
+
+        //부모에서 자식 선택
+        var v_magi = v_parent.children[0]; 
+        v_magi.parentElement.style.border = "10px dashed pink";
+        //위에 코드와 아래 코드가 같은 대상을 지정하고 있는데, 자바스크립트 특성으로
+        //두 코드 모두 적으면 아래코드가 적용된다.
+        //v_sonja.parentElement.parentElement.style.border = "2px solid red";
+        v_sonja.parentElement.style.border = "5px solid blue";
+        
+
+    </script>
+</body>
+</html>

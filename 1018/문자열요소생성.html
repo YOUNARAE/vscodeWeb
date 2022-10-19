@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>문자열요소생성</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
 $(function(){
@@ -18,9 +18,9 @@ $(function(){
 
     $('input[type="button"]').eq(1).on('click',function(){
         var v_tagP = $('<p></p>',{
-            'title' : '♥',
-            'text' : 'Hello jQuery!!',
-            'click' : function(){
+            title : '♥',
+            text : 'Hello jQuery!!',
+            click : function(){
              $(this).css("border","3px dotted pink");
             }
         });

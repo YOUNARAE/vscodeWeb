@@ -12,21 +12,23 @@
 
 
 $(function(){
-    // 화면을 떴을 때 input 버튼을 뜨게 해주기
-    $('body').append($('<input>',{
-        'type' : 'button',
-        'value' : '이미지 찾기'}));
+    //$('#ibt').show();
     //버튼 클릭 시 동적으로 이미지 추가하기
+    //width,height 크기 지정
+    $('body').append($('<input>',{
+            'type' : 'file',
+            'value' : '이미지첨부'}));
     $('input[type=button]').on('click',function(){
         v_tagImg = $('<img src="../images/img/br2.jpg" onclick="f_click(this);">');
         v_tagImg.css("width","300px").css("height","300px");
         $('#disp').append(v_tagImg);
     }); 
 });
+
 //이미지 클릭 시 이미지 테두리 넣기
-function f_click(p_this){
+/* function f_click(p_this){
     $(p_this).css("border","10px solid orange");
-} 
+} */
 </script>
 </head>
 <body>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>기본필터</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+ $(function(){
+    // :first :last :eq :lt :gt는 권장하지 않음 >> 메소드로 대체 권장 // 사용하지 말자는 뜻으로
+    //$('li:first, li:last').css('backgroundColor','lightgreen');
+    // 메소드 사용
+    $('li').first().css('backgroundColor','lightgreen');
+/*     $('li').last().css('backgroundColor','lightpink')
+                  .css('color','#fff')
+                  .css('fontWeight','bold'); */
+    $('li').last().css({'backgroundColor':'lightpink','color':'blue','fontWeight':'bold'});
+
+    //$('li:eq(4)').css("backgroundColor","lightyellow");
+    $('li').eq(4).css("backgroundColor","lightyellow");
+
+    // index는 포함하지 않음
+    //$('li:lt(4)').css("color","blue");
+    //$('li:gt(4)').css("color","pink");
+    //slice(start,end) 대체 >> slice(start, end)에서 end는 미포함, end 생략시 끝까지 적용
+    $('li').slice(1,4).css("color","blue");
+    //$('li').slice(5).css("color","orange"); //5부터 끝까지.
+    
+    //--------------------------------------------------------------------------------------
+
+    $('li:odd').css("borderStyle","inset")
+    $('li:even').css("borderStyle","outset")
+    $('li:not(.not)').css("textDecoration","line-through") 
+ });   
+ 
+</script>
+</head>
+<body>
+    <h4>기본필터</h4>
+    <ul>
+        <li>:first</li>
+        <li>:last</li>
+        <li>:eq(index)</li>
+        <li>:gt(index)</li>
+        <li>:lt(index)</li>
+        <li class="not">:odd</li>
+        <li class="not">:even</li>
+        <li>:not(select)</li>
+    </ul>
+</body>
+</html>
