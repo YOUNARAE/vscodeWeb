@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img {
+            width:100px;
+            height:150px;
+        }
+    </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+</head>
+<body>
+    <h4>img요소의 src 속성 중 파일명만 추출하여 
+        title값으로 설정</h4>
+    <div>
+        <img src="../images/img/br1.jpg" alt="">
+        <img src="../images/img/br2.jpg" alt="">
+        <img src="../images/img/br3.jpg" alt="">
+        <img src="../images/img/br4.jpg" alt="">
+        <img src="../images/img/br5.jpg" alt="">
+    </div>
+<script>
+    //get - 첫번쨰 항목만 반환
+    //var v_src = $('img').attr('src').substring($('img').attr('src').lastIndexOf('/') + 1);
+    //v_src = $(this).attr('src').substring(14);
+    //console.log(v_src);
+
+    //set - 모든 항목에 일괄적용된다
+    // $('img').attr('alt','동일함');
+    // $('img').attr('title','똑같은 title');
+
+    //콜백함수 내부에서 반환하는 값으로 title속성을 적용하자
+    $('img').attr('title',function(){
+        //첫번째 항목만 반환받기 때문에
+        //함수안에서 순차적으로 값을 받아 속성을 적용
+        var v_src = $(this).attr('src');
+        //substring(str,end)
+        var str = v_src.lastIndexOf('/')+1;
+        var end = v_src.lastIndexOf('.'); // 마지막점 전까지, 마지막값은 생략된다
+        var fname = v_src.substring(str,end);
+        return fname;
+    });
+
+    //속성 제거
+    $('img').eq(3).removeAttr('src');
+
+    //여러가지 속성 설정
+    $('img').eq(3).attr({'src':'../images/img/br6.jpg','title':'spc불매'});
+
+</script>
+</body>
+</html>

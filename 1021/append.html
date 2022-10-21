@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>append</title>
+    <style>
+        p {
+            border : 3px solid lavender;
+            display: inline-block;
+        }
+
+        img {
+
+            width:50px;
+            height: 50px;
+        }
+    </style>
+</head> 
+<body>
+    <h4>요소 정보를 활용해 이미지를 생성하고 추가하기</h4>
+    <p title="심1">s1</p><br>
+    <p title="심2">s2</p><br>
+    <p title="꼬북">kkobugi</p><br>
+    <p title="심4">s4</p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+
+<script>
+    $('p').on('click',function(){
+        var v_txt = $(this).text();
+        var v_title = $(this).attr('title');
+
+        // JS 동적 이미지 생성 - 문자열 그대로 만드는 방식
+        //var v_img = "<img src='../images/img/"+ v_txt +".jpg'" + " alt='"+ v_title + "'>"; 
+
+        // JS 동적이미지생성 - creatElement를 이용하는 방식
+        var v_img1 = document.createElement("img");
+        v_img1.src = "../images/img/"+ v_txt +".jpg";
+        v_img1.alt = v_title;
+
+        //$(this).append(v_img);
+        //$(v_img).appendTo(this);
+
+        // prepend, prepednTo 요소 내부 앞쪽에 붙임
+        //$(this).prepend(v_img);
+        //$(v_img).prepenTo(this);
+
+        // after, insertAfter 요소 외부 뒷쪽에 붙임
+        //$(this).after(v_img);
+        
+        // before, insertBefor 요소 외부 앞쪽에 붙임
+        //$(v_img1).insertBefore(this);
+
+        //JQ 동적 이미지 생성
+        var v_img2 = $(`<img src='../images/img/${v_txt}.jpg' alt='${v_title}'>`);
+        //v_img2.appendTo(this);
+
+        //JQ - 동적이미지생성2
+        // $('<img>', {
+        //     'src' : '../images/img/' + v_txt + '.jpg',
+        //     'alt' : v_title
+        // }).insertBefore(this);
+
+        $(this).after($('<img>', {
+            'src' : '../images/img/' + v_txt + '.jpg',
+            'alt' : v_title
+        }));
+
+    });
+</script>
+
+</body>
+</html>

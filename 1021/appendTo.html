@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width:100px;
+            height:100px;
+        }
+    </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+</head>
+<body>
+    <input type="button" value="append">
+    <input type="button" value="prepend">
+    <div>
+        <img src="../images/img/br2.jpg" alt="">
+        <img src="../images/img/br3.jpg" alt="">
+        <img src="../images/img/br4.jpg" alt="">
+        <img src="../images/img/00.jpg" alt="">
+        <img src="../images/img/죠얼굴.jpg" alt="">
+    </div>
+<script>
+    $('input:button').eq(0).on('click',function(){
+        $('img').first().appendTo($('div'));
+    });
+    $('input:button').eq(1).on('click',function(){
+        $('img').last().prependTo($('div'));
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img {width:40px;height:40px;}
+    </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+
+</head>
+<body>
+    <img src="../images/img/br2.jpg" data-src="../images/img/s1.jpg">
+    <img src="../images/img/br3.jpg" data-src="../images/img/s2.jpg">
+    <img src="../images/img/br4.jpg" data-src="../images/img/oreo.jpg">
+    <img src="../images/img/00.jpg" data-src="../images/img/s4.jpg">
+    <img src="../images/img/죠얼굴.jpg" data-src="../images/img/죠르디1.jpg">   
+    
+<script>
+    $('img').on({
+    mouseenter:function(){
+        var v_src = $(this).attr('src'); //원래 이미지
+        //var v_src2 = $(this).attr('data-src');
+        var v_src2 = $(this).data('src'); //변경될 이미지
+        console.log(v_src, v_src2)
+        $(this).attr('src',v_src2);
+    }, 
+    mouseleave:function(){
+        
+    }, 
+    dblclick:function(){
+    }
+});
+</script>
+</body>
+</html>
