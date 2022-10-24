@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var f_fnc = function(){
+        alert("표현식 함수(expression)");
+    }
+
+    function f_fnc3(p_arg1, p_arg2, p_arg3) {
+        alert("넘어오는 인자수 부족시" + p_arg3 + "반환");
+        alert(p_arg1 + ", " + p_arg2);
+        return p_arg1; //return 생략가능
+    }
+    var v_return = f_fnc3(); //funcion pointer
+    console.log(v_return);
+
+    var v_return = f_fnc3("함수호출시", "괄호작성");
+</script>
+</body>
+</html>

@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>이벤트_예제</title>
     <style>
-        img {width:40px;height:40px;}
+        img {width:100px;height:100px;}
+
+        input[type=button] {
+            display: none;
+        }
     </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
-
 </head>
 <body>
     <img src="../images/img/br2.jpg" data-src="../images/img/s1.jpg">
@@ -15,21 +18,28 @@
     <img src="../images/img/br4.jpg" data-src="../images/img/oreo.jpg">
     <img src="../images/img/00.jpg" data-src="../images/img/s4.jpg">
     <img src="../images/img/죠얼굴.jpg" data-src="../images/img/죠르디1.jpg">   
-    
+    <input type="button" value="보이기">
 <script>
+    var v_src="";
     $('img').on({
     mouseenter:function(){
-        var v_src = $(this).attr('src'); //원래 이미지
+        v_src = $(this).attr('src'); //원래 이미지
         //var v_src2 = $(this).attr('data-src');
         var v_src2 = $(this).data('src'); //변경될 이미지
-        console.log(v_src, v_src2)
+        //console.log(v_src, v_src2)
         $(this).attr('src',v_src2);
     }, 
     mouseleave:function(){
-        
+        $(this).attr('src',v_src);
     }, 
     dblclick:function(){
+        $(this).hide();
+        if($('img:visible').length < 1) $('[value="보이기"]').show(); 
     }
+});
+$('input[type=button]').on('click',function(){
+    $('img').show();
+    $(this).hide();
 });
 </script>
 </body>

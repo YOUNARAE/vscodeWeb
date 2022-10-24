@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<!--
+    delegate(위임,대리)
+    부모 이벤트를 물려받아 지정된 선택자에 이벤트를 연결하는 방식
+    때문에, 동적인 요소도 이벤트 처리가 가능함
+    **이벤트를 무조건 부모가 가지고 있기 때문에 이벤트를 넣는 것도 해제시키는 것도 모두
+    부모요소를 통해 이벤트를 실행한다
+-->
+<div class="wrapper">
+    <input type="button" class="btn" value="버튼">
+    <input type="button" id="clear" value="해제">
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+// $(parentSelector).delegate('childSelector','event',function(){})
+$('.wrapper').on('click','.btn',function(){
+    //새버튼생성
+    $('<input>', {
+        'type': 'button',
+        'class': 'btn',
+        'value': '버튼'
+    }).appendTo('.wrapper');
+});
+
+// 이벤트를 적용받는 부모를 대상으로 
+$('#clear').on('click', function () {
+    $('.wrapper').off('click');
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h3>원래 있던 창</h3>
+    <textarea id="old_text" cols="30" rows="20">멀티라인</textarea>
+    <input type="button" value="새창열기" onclick="f_winOpen()">
+    <input type="button" value="닫기" onclick="f_winClose()">
+
+    <script>
+        var win;
+        function f_winOpen(){
+            win = open("새창연습2.html","narae","width=400","height=400");
+        }
+        function f_winClose(){
+            win.close();
+        }
+    </script>
+</body>
+</html>

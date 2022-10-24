@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    var v_array = [];
+    v_array[0] =1;
+    v_array[1] =1;
+    v_array[2] =1;
+    v_array[3] =1;
+
+    var v_array2 = [];
+    v_array2[0] = "배열임";
+    v_array2[10] = "배열11번째꺼임";
+    //console.log(v_array2);
+    //console.log(v_array2.length);
+
+    // For문이용
+    var v_array3 = [];
+    for(var i=11;i<30;i++){
+       v_array3[v_array3.length] = i;
+    }
+    //console.log(v_array3);
+
+    var v_array4 = new Array();
+    for(var i=10;i>0;i--){
+        v_array4.push(i); //만든 push()
+    }
+    console.log("v_array4 =>", v_array4);
+    
+    function push(p_arr, p_val){
+        p_arr[p_arr.length] = p_val;
+    }
+   // alert(p_arr);
+    
+    var v_array5 = new Array('0','1','2');
+    var v_array6 = ['1','2','3'];
+    
+    v_array5.splice(1,2);
+    console.log(v_array5);
+
+    v_array6.push({name : "BTS", merit :"월드스타"});
+    console.log("v_array6 =>", v_array6);
+
+    
+    
+</script>
+</body>
+</html>

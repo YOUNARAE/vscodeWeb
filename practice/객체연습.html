@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var myObj = {
+        name: "아이유",
+        age: 40,
+        hello: function(){
+            return `이름은 ${this.name}이고, 나이는 ${this.age}입니다`
+        }
+    }
+    //console.log(myObj.name);
+    //console.log(myObj.hello);
+
+    var myObj2 = new Object();
+    myObj2.name = "김연아";
+    myObj2["age"] = 33;
+    myObj2.hello = function(){
+        return `이름 : ${this.name} 나이 : ${this.age}`; 
+    }
+
+    //custom Object 생성자 함수
+    var SelfObj = function(name, age){
+        this.name = name;
+        this.age = age;
+        this.한국나이 = parseInt(age) + 2;
+        // this["한국나이"] = parseInt(age) + 2;
+        this[1] = '배열식 접근법';
+        this.hello = function(){
+            return `이름은 ${this.name} 이고 \r\n
+            나이는 ${this.age}/${this.한국나이} \r\n
+            숫자로 된 key는 ${this[1]}으로 표시!!`;
+        }
+    }
+
+</script>
+</body>
+</html>

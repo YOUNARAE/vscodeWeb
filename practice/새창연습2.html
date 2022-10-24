@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h3>새로 열린 창</h3>
+    <textarea id="new_text" cols="100" rows="20" onkeydown="f_kd()">여기에 적어주세요</textarea>
+    <input type="button" value="저장" onclick="f_chat()">
+
+    <script>
+        function f_kd(){
+            if(event.key=='Enter'){
+                f_chat();
+            }
+        }
+
+        var v_newText = document.querySelector("#new_text");
+        function f_chat(){
+            opener.document.querySelector("#old_text").value = v_newText.value;
+            window.close();
+        }
+    </script>
+</body>
+</html>
