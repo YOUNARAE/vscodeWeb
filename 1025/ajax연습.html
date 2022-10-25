@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="disp"></div>
+<input type="button" value="AJAX호출" onclick="f_ajax()">
+<input type="button" value="CSV" onclick="f_csv()">
+<input type="button" value="JSON" onclick="f_json()">
+<input type="button" value="XML" onclick="f_xml()">
+<script>
+    function f_ajax(){
+        //객체생성
+        var v_ajax = new XMLHttpRequest();
+        //정보생성
+        v_ajax.open("get","dummy.txt",true);
+        //정보전달
+        v_ajax.send();
+        //응답상태 확인 및 결과 반환
+        v_ajax.onreadystatechange = function(){
+            if(v_ajax.readyState==4&&v_ajax.status==200){
+                alert(v_ajax.responseText)
+            }
+        }
+    }
+
+
+
+
+    //csv 데이터 받아오기
+    function f_csv(){
+        //ajax를 이용해 데이터를 받아오고
+        //console.log로 데이터를 표현해봐요
+        var v_csv = new XMLHttpRequest();
+        //정보생성
+        v_csv.open("get","test.csv",true);
+        //응답상태확인 및 결과요청
+        v_csv.onreadystatechange = function(){
+            if(v_csv.readyState==4&&v_csv.status==200){
+                //console.log(v_csv.responseText);
+                f_test(this.responseText);
+            }
+        }
+        //정보전달
+        v_csv.send();
+    }
+    // 값을 넘겨 받아 table형식으로 출력하기
+    var v_disp = document.getElementById('disp');
+    function f_test(p_arg){
+        var v_lines = p_arg.split("\n");
+        //줄넘김 기호(line feed)한 줄씩 데이터 분리
+        var v_tbl = "<table border=1>";
+        for(var i=0; i<v_lines.length; i++){
+            var v_str = v_lines[i].split(",");
+            v_tbl += "<tr>";
+            //분리된 내용을 순차적으로 찍어주기 . cell공간(td)에
+            for(var j=0; j<v_str.length; j++){
+                v_tbl += "<td>" + v_str[j] + "</td>";
+            }
+            v_tbl += "</tr>";
+        }    
+        v_tbl += "</table>"
+        v_disp.innerHTML = v_tbl;
+    }
+
+
+
+
+    //Json데이터 받아오기
+    function f_json(){
+        var v_json = new XMLHttpRequest();
+        v_json.open("get","test.json",true);
+        v_json.onreadystatechange = function(){
+            if(v_json.readyState==4&&v_json.status==200){
+                //console.log(v_json.responseText); // json데이터를 객체로 변환필요
+                var jsonObjArr = JSON.parse(this.responseText);
+                console.log(jsonObjArr);
+                // 데이터를 함수로 전달하고 table형태로 표현하기
+                f_test2(jsonObjArr);            }
+        }
+        v_json.send();
+    }
+    // 값을 넘겨 받아 table형식으로 출력하기
+    function f_test2(p_arg){
+        var v_tbl = "<table border=1>";
+
+        // object의 key정보를 테이블헤더로 표시하기
+        var v_vals = Object.values(p_arg);
+        // 배열 중 하나를 선택하기 위해서 index는 아무거나 골라요
+        var v_keys = Object.keys(v_vals[2]); 
+
+        //v_tbl += "<tr><td>이름</td><td>종류</td><td>별명</td></tr>";
+        v_tbl += `<tr><td>${v_keys[0]}</td><td>${v_keys[1]}</td><td>${v_keys[2]}</td></tr>`;
+        for(var i=0;i<p_arg.length; i++){
+            v_tbl += "<tr>"
+            v_tbl += "<td>" + p_arg[i].name + "</td>";
+            v_tbl += `<td>${p_arg[i].type}</td>`;
+            v_tbl += `<td>${p_arg[i]["alias"]}</td>`;
+            v_tbl += "</tr>";
+        }
+        v_tbl += "</table>"
+        v_disp.innerHTML = v_tbl;
+    }
+
+
+
+
+
+    //XML데이터 받아오기
+    function f_xml(){
+        var v_xml = new XMLHttpRequest();
+        v_xml.open("get","test.xml",true); 
+        v_xml.onreadystatechange = function(){
+            if(v_xml.readyState==4&&v_xml.status==200){
+               //console.log(v_xml.responseXML);
+               f_test3(this.responseXML);
+            }
+        }
+        v_xml.send();
+    };
+    function f_test3(p_arg){
+        var friends = document.querySelectorAll("friend");    
+        
+        v_tbl = "<table border=1>";
+        v_tbl += "<tr><td>이름</td><td>type</td><td>별명</td></tr>";
+        for(var i=0; i<friends.length; i++){
+            v_tbl += "<tr>";
+            //한덩어리씩 나눈 후, 세부정보를 변수에 담아야 함
+            var children = friends[i].children;
+            for(var j=0; j<children.length; j++){
+                v_tbl += `<td>${children[j].innerHTML}</td>`;
+            }
+            v_tbl += "</tr>";
+        }
+        v_tbl += "</table>";
+        v_disp.innerHTML = v_tbl;
+    }
+</script>
+</body>
+</html>
