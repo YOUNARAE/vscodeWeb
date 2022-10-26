@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery방식AJAX</title>
+</head>
+<body>
+
+<script>
+    // 빈 객체를 이용한 namespace 생성하기 
+    var kor = {};
+    kor.seoul = {};
+    kor.daejeon = {};
+    kor.seoul.yujin = "서울 유진";
+    kor.daejeon.yujin = "대전 유진";
+
+    // javascript에서 사용할 수 있는 유일한 특수문자 2개
+    // 식별자에서 유일하게 사용가능한 특수문자 : ('_' , '$'')
+
+    var $ = {}; //namespace용 빈객체 생성(자바의 package에 해당)
+    $.ajax = function(p_set){
+        var v_ajax = new XMLHttpRequest();
+        v_ajax.open(p_set.method, p_set.url, true);
+        v_ajax.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                this.responseText;
+                p_set.success(this.responseText);
+            }
+        }
+        v_ajax.send();
+    }
+
+    // 생성된 ajax메소드를 호출해 봅시다
+    $.ajax({
+        method : 'get',
+        url : '../1025/dummy.txt',
+        success : function(p_rst){
+            alert(p_rst);
+        }
+    });
+
+</script>
+</body>
+</html>
