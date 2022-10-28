@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<body>
+    <div></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+<script>
+ $.ajax({
+    url:'jsonp.json', // 서버로서 요청데이터를 주는 곳으로 가정
+    dataType:'jsonp',
+    jsonpCallback:'myCallback',
+    success: function(aa){
+      console.log(aa);
+      $.each(aa.body,function(i){
+        console.log(this.BSSH_NM);
+        //$('body').html(this["BSSH_NM"]);
+        //$('body').append(aa.body[i]["BSSH_NM"]+"<br>"); 
+        $('body').append("가게이름 : " + aa.body[i]["BSSH_NM"]+",<br/> 주소 : "+aa.body[i]["SIGUN_NM"]+"<br><br>"); 
+        //인덱스i를 쓰기 위해 function에 매개변수 선언해줘야함
+      });
+    },
+    error: function(xhr){
+      alert("상태 : " + xhr.status)
+    }
+ });
+</script>
+</body>
+</html>

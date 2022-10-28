@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+<script>
+ $.ajax({
+    url:'https://www.flickr.com/services/feeds/photos_public.gne?tags=yunakim&format=json',
+    dataType:'jsonp',
+    jsonpCallback:'jsonFlickrFeed',
+    success: function(aa){
+      console.log(aa);
+      // 오브젝트 형식을 대상으로 하는 each메서드 사용
+      $.each(aa.items,function(){
+         console.log(this.media.m);
+         $('<img>', {
+            'src':this.media.m, 
+            'alt':'flickr 무료 이미지'
+         }).appendTo('#box'); //부모영역 body
+      });
+
+    },
+    error: function(xhr){
+      alert("상태 : " + xhr.status)
+    }
+ });
+</script>
+<body>
+   <style>
+      img {
+         display: block;
+         margin:0 auto;
+      }
+
+   </style>
+   <div id="box" style="width:300px;height:50vh;overflow-y: scroll;"></div>
+</body>
