@@ -3,8 +3,8 @@
 <body>
     <div></div>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"></script>	
 <script>
 // proxy server를 통한 우회 방식
 // 브라우저와 서버 간 통신을 가능하게 만드는 중계서버
@@ -17,20 +17,31 @@ $.ajax({
     // get방식으로 접근시 querystring을 통해 속성 정보를 전달하고
     // 그중 serviceKey는 개인정보이므로 인코딩(암호화)된 형태로 전달한다
     // url : 'http://apis.data.go.kr/6300000/eventDataService/eventDataListJson?serviceKey=CPjUVtNUhoQa%2BDJfENEs3ANxQ0HLahrdOvGAE40dZ5F%2BeIDOm%2Bw9l%2Blim2G6EnspsTApZ8O0%2FFyEu2dcmlCOVQ%3D%3D&pageNo=1&numOfRows=5',
-    url : 'http://apis.data.go.kr/6300000/eventDataService/eventDataListJson',
-    data : {
-        //decoding(복호화) 인증 key 사용
-        'serviceKey' : 'CPjUVtNUhoQa+DJfENEs3ANxQ0HLahrdOvGAE40dZ5F+eIDOm+w9l+lim2G6EnspsTApZ8O0/FyEu2dcmlCOVQ==',
-        'pageNo' : '1',
-        'numOfRows' : '15'
-    },
-    dataType : 'json',
+    //url : 'https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko',
+    url : 'http://cors-anywhere.herokuapp.com/https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko',
+    dataType : 'text',
     success : function(a){
-        console.log(a);
-        $.each(a.msgBody, function(i){
-            $('div').append(this.title + "<br>");
-            $('div').append(a.msgBody[i].placeCdNm + "<br>");
-        });
+        // console.log(a);
+        var x2j = new X2JS();
+        var data = x2j.xml_str2json(a);
+        console.log(data);
+        var items = jsonObj.rss.channel.item;
+        // $.each(a.msgBody, function(i){
+        //     $('div').append(this.title + "<br>");
+        //     $('div').append(a.msgBody[i].placeCdNm + "<br>");
+        // });
+
+        // 테이블 형태로 출력
+        var v_tbl = "<table border=1>";
+        v_tbl += "<tr><td>제목</td><td>발행일</td></tr>";
+        for(var i=0; i<items.length; i++){
+            v_tbl += "<tr>";
+            v_tbl += `<td><a href='${items[i].link}'>${items[i].title}</a></td>`;
+            v_tbl += `<td>${items[i].pubDate}</td>`;
+            v_tbl += "</tr>";
+        }
+        v_tbl += "</table>";
+
     },
     error : function(xhr){
         alert("상태 : " + xhr.status)

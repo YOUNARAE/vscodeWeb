@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+    <!-- <canvas> 그래픽용 
+         브라우저 기반 게임회사 또는 예쁜 웹 컴포넌트를 만드는 회사에서 주로 사용
+         일반적인 웹 개발자는 거의 사용하지 않음.    
+    -->
+    <div style="width:400px; height:400px">
+        <canvas id="myChart"></canvas>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>  
+<script>
+                                              //getContext() : 드로잉 컨텍스트에 액세스
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    //type: 'bar',
+    data: {
+        labels: ['캠베엘리','거봉','샤인머스캣', '기타'],
+        datasets: [{
+            type: 'bar',
+            label: '#2016',
+            data: [61.4, 23.8, 15.5, 25.1],
+            backgroundColor: f_color(4),
+            borderColor: f_color(4),
+            borderWidth: 1
+        },{
+            type: 'line',
+            label: '# 2021',
+            data: [36.6, 21.0, 31.6, 10.8],
+            backgroundColor: f_color(4),
+            borderColor: f_color(4),
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+function f_ranAlpha(){
+    return parseFloat("0." + Math.floor(Math.random()*9));
+}
+function f_ran256(){
+    //return parseInt(Math.random()*256);
+    return Math.floor(Math.random()*256);
+}
+
+function f_color(p_arg){ //생성할 랜덤항목의 수를 받아서 만듦
+    var v_colors = [];
+    var v_colorStr = "";
+    //rgba(255, 99, 132, 1)형태의 데이터를 p_arg갯수만큼 배열에 담아야 함
+    for(var i=0; i<p_arg; i++){
+        v_colorStr = "rgba(" + f_ran256() + 
+                         "," + f_ran256() + 
+                         "," + f_ran256() + 
+                         ", " + f_ranAlpha() + ")";    
+        v_colors.push(v_colorStr);
+    }
+    return v_colors; // 배열데이터
+}
+</script>
+ 
+</body>
+</html>
