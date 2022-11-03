@@ -21,18 +21,18 @@
                                               //getContext() : 드로잉 컨텍스트에 액세스
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
-    //type: 'bar',
+    type: 'bar',
     data: {
         labels: ['캠베엘리','거봉','샤인머스캣', '기타'],
         datasets: [{
-            type: 'bar',
+            type: 'bar', // bar, line, pie, radar, doughnut
             label: '#2016',
             data: [61.4, 23.8, 15.5, 25.1],
             backgroundColor: f_color(4),
             borderColor: f_color(4),
             borderWidth: 1
         },{
-            type: 'line',
+            type: 'line', //bar와 line만이 함께 차트로 그릴 수 있음
             label: '# 2021',
             data: [36.6, 21.0, 31.6, 10.8],
             backgroundColor: f_color(4),
@@ -48,6 +48,14 @@ const myChart = new Chart(ctx, {
         }
     }
 });
+
+//chart.js의 장점 = 구조대로 접근이 용이함
+console.log(myChart.data.labels);
+console.log(myChart.data.datasets);
+console.log(myChart.data.datasets[1].type);
+myChart.data.datasets[1].type = "bar";
+myChart.update(); //변경된 정보를 업데이트해야 화면에 표현됨
+                  //chart.js에서 가장 중요하다
 
 function f_ranAlpha(){
     return parseFloat("0." + Math.floor(Math.random()*9));

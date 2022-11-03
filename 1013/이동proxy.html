@@ -35,20 +35,17 @@
     var v_autoL = document.querySelector("#autoL");
     var v_disp = document.querySelector("#id_disp");
     var timeout;
-
     
    function f_stop(){
         clearTimeout(timeout); // setTimeout 기능 정지 
     };
 
-    
     function f_right(){
         var last = v_disp.lastElementChild; 
         v_disp.insertBefore(last, v_disp.firstChild); 
         timeout = setTimeout(f_right,500);
     };
 
-    
     function f_left(){
         var first = v_disp.firstElementChild; 
         v_disp.insertBefore(first, v_disp.lastChild);

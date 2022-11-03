@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+    <div style="width:400px; height:250px">
+        <canvas id="myChart"></canvas>
+    </div>
+    <input type="button" value="chart update" onclick="f_update()">
+    <input type="button" value="AJAX DATA" onclick="f_proxyUpdate()">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+
+<script>
+function f_update2(){
+    var req = new XMLHttpRequest();
+    req.open('get','chartData/testData.json',true);
+    req.onreadystatechange = function(){
+        if(req.readyState==4 && req.status==200){
+            var v_rst = JSON.parse(req.responseText); //json object => js
+            f_updateChart(v_rst);
+        }
+    }
+    req.send();
+}
+
+var exist = false;  // 눌림 표시 정보
+// ajax_data 버튼 시작 
+function f_proxyUpdate(){
+    if(!exist){
+        f_update2();
+        exist = true;
+    }
+}
+
+function f_updateChart(p_arg){
+    // console.log(p_arg);
+    myChart.data.labels = p_arg.label;
+    myChart.data.datasets.splice(0,1); //index위치에서 지움
+    myChart.data.datasets[0].label = p_arg.name;
+    myChart.data.datasets[0].data = p_arg.score;
+    myChart.update();
+}
+
+// 차트의 데이터 및 타입을 업데이트 합니다
+// 차트 업데이트 버튼 선택
+function f_update(){
+	// ajax_data 버튼 눌림 표시 초기화
+	exist = false;
+
+    var v_data1 = [];
+    var v_data2 = [];
+
+    for(var i=1; i<=4; i++){
+        //Math.ceil(Math.random()*100)
+        var v_ranVal = parseInt(Math.random()*100);
+        v_data1.push(v_ranVal);
+        v_ranVal = parseInt(Math.random()*100);
+        v_data2.push(v_ranVal);
+    }
+	// console.log(" myChart.data.datasets[0] == " + myChart.data.datasets[0]);
+	// console.log(" myChart.data.datasets[1] == " + myChart.data.datasets[1]);
+
+	if( myChart.data.datasets[1] == "undefined" || myChart.data.datasets[1] == null ){
+		var tmpObj = {
+				type: 'line', 
+				label: '# 2021',
+				data: [36.6, 21.0, 31.6, 10.8],
+				backgroundColor: f_color(4),
+				borderColor: f_color(4),
+				borderWidth: 1
+			};
+		myChart.data.datasets.push(tmpObj);
+	}
+
+    myChart.data.datasets[0].data = v_data1;
+    myChart.data.datasets[1].data = v_data2;
+	
+	// "radar",
+	// 차트 모양을 랜덤으로 정의
+    var v_type=["bar","line","pie","doughnut"];
+    var v_ranSu = parseInt(Math.random()*v_type.length);
+
+	//console.log("v_ranSu== " + v_type[v_ranSu] );
+    //myChart.data.datasets[1].type = "line";
+    myChart.data.datasets[0].type = v_type[v_ranSu];
+    myChart.data.datasets[1].type = v_type[v_ranSu];
+    myChart.update();
+}
+
+
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: ['캠베엘리','거봉','샤인머스캣', '기타'],
+			datasets: [{
+				type: 'bar',
+				label: '#2016',
+				data: [61.4, 23.8, 15.5, 25.1],
+				backgroundColor: f_color(4),
+				borderColor: f_color(4),
+				borderWidth: 1
+			},{
+				type: 'line', 
+				label: '# 2021',
+				data: [36.6, 21.0, 31.6, 10.8],
+				backgroundColor: f_color(4),
+				borderColor: f_color(4),
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+					beginAtZero: true
+				}
+			}
+		}
+	});
+
+// 시작
+console.log(myChart.data.labels);
+console.log(myChart.data.datasets);
+console.log(myChart.data.datasets[1].type);
+myChart.data.datasets[1].type = "bar";
+myChart.update(); 
+
+function f_ranAlpha(){
+    return parseFloat("0." + Math.floor(Math.random()*9));
+}
+
+function f_ran256(){
+    return Math.floor(Math.random()*256);
+}
+
+function f_color(p_arg){ 
+    var v_colors = [];
+    var v_colorStr = "";
+    for(var i=0; i<p_arg; i++){
+        v_colorStr = "rgba(" + f_ran256() + 
+                         "," + f_ran256() + 
+                         "," + f_ran256() + 
+                         ", " + f_ranAlpha() + ")";    
+        v_colors.push(v_colorStr);
+    }
+    return v_colors; 
+}
+</script>
+ 
+</body>
+</html>
